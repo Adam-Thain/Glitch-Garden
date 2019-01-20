@@ -21,8 +21,8 @@ public class LevelManager : MonoBehaviour {
     {
         // If the first scene is zero (start)
         // Else load the next level automatically 
-        if(autoLoadNextLevelAfter == 0)
-            Debug.Log("level Auto load Disabled");
+        if(autoLoadNextLevelAfter <= 0)
+            Debug.Log("level Auto load Disabled, use a positive number in seconds");
         else
             Invoke("LoadNextLevel", autoLoadNextLevelAfter);
     }

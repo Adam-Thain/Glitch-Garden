@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MusicManager : MonoBehaviour {
 
@@ -66,6 +67,16 @@ public class MusicManager : MonoBehaviour {
             // Play the audio source
             audioSource.Play();
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetVolume(float volume)
+    {
+        //
+        audioSource.volume = volume;
     }
 
     #endregion
