@@ -4,7 +4,7 @@ using System.Collections;
 public class Attacker : MonoBehaviour {
 
     [Range(-1f, 1.5f)]
-    public float walkSpeed;
+    public float currentSpeed;
 
     /// <summary>
     /// Use this for initialization
@@ -18,7 +18,7 @@ public class Attacker : MonoBehaviour {
     /// Update is called once per frame
     /// </summary>
     void Update () {
-        transform.Translate(Vector3.left * walkSpeed * Time.deltaTime);
+        transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
 	}
 
     /// <summary>
@@ -26,5 +26,21 @@ public class Attacker : MonoBehaviour {
     /// </summary>
     void OnTriggerEnter2D (){
         Debug.Log(name + " trigger enter");
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="speed"></param>
+    public void SetSpeed(float speed){
+        currentSpeed = speed;
+    }
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="damage"></param>
+    public void StrikeCurrentTarget(float damage){
+        Debug.Log(name + "caused " + damage + " damage");
     }
 }
