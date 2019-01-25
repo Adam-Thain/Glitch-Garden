@@ -1,17 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This Script requires the Rigidbody2D to work
+/// </summary>
+[RequireComponent (typeof(Rigidbody2D))]
 public class Attacker : MonoBehaviour {
 
-    [Range(-1f, 1.5f)]
-    public float currentSpeed;
+    /// <summary>
+    /// Current speed of the attacker
+    /// </summary>
+    private float currentSpeed;
 
+    /// <summary>
+    /// Current target of the attacker
+    /// </summary>
+    private GameObject currentTarget;
+         
     /// <summary>
     /// Use this for initialization
     /// </summary>
     void Start () {
-        Rigidbody2D myRigidbody = gameObject.AddComponent<Rigidbody2D>();
-        myRigidbody.isKinematic = true;
+
 	}
 
     /// <summary>
@@ -37,10 +47,18 @@ public class Attacker : MonoBehaviour {
     }
     
     /// <summary>
-    /// 
+    /// Called from the animator at the time of the actual attack
     /// </summary>
     /// <param name="damage"></param>
     public void StrikeCurrentTarget(float damage){
         Debug.Log(name + "caused " + damage + " damage");
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="obj"></param>
+    public void Attack(GameObject obj){
+        currentTarget = obj;
+    } 
 }
