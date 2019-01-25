@@ -16,12 +16,17 @@ public class Attacker : MonoBehaviour {
     /// Current target of the attacker
     /// </summary>
     private GameObject currentTarget;
+
+    /// <summary>
+    /// Animator of the attacker
+    /// </summary>
+    private Animator animator;
          
     /// <summary>
     /// Use this for initialization
     /// </summary>
     void Start () {
-
+        animator = GetComponent<Animator>();       
 	}
 
     /// <summary>
@@ -29,7 +34,13 @@ public class Attacker : MonoBehaviour {
     /// </summary>
     void Update () {
         transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
-	}
+
+        // If there is no target set is attacking to false
+        if (!currentTarget)
+        {
+            animator.SetBool("isAttacking", false);
+        }
+    }
 
     /// <summary>
     /// 
@@ -49,9 +60,22 @@ public class Attacker : MonoBehaviour {
     /// <summary>
     /// Called from the animator at the time of the actual attack
     /// </summary>
-    /// <param name="damage"></param>
+    /// <param name="damage"> The amound of damage delt </param>
     public void StrikeCurrentTarget(float damage){
-        Debug.Log(name + "caused " + damage + " damage");
+
+        // If there is a target for out attacker
+        if(currentTarget)
+        {
+            // Get the targets health script 
+            Health health = currentTarget.GetComponent<Health>();
+
+            // If the target has health
+            if(health)
+            {
+                // Apply damage to the target
+                health.DealDamage(damage);
+            }
+        }       
     }
 
     /// <summary>
