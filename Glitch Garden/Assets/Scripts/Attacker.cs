@@ -46,7 +46,7 @@ public class Attacker : MonoBehaviour {
     /// 
     /// </summary>
     void OnTriggerEnter2D (){
-        Debug.Log(name + " trigger enter");
+
     }
 
     /// <summary>
