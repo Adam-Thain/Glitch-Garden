@@ -6,7 +6,12 @@ public class Shooter : MonoBehaviour {
     /// <summary>
     /// Projectile and Parent
     /// </summary>
-    public GameObject projectile, projectileParent,gun;
+    public GameObject projectile,gun;
+
+    /// <summary>
+    /// Projectile Parent
+    /// </summary>
+    private GameObject projectileParent;
 
     /// <summary>
     /// Use this for initialization
