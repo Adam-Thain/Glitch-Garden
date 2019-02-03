@@ -6,13 +6,17 @@ using System.Collections;
 public class StarDisplay : MonoBehaviour {
 
     private Text starText;
-    private int stars = 0;
+
+    private int stars = 100;
+
+    public enum Status {SUCCESS,FAILURE};
 
     /// <summary>
     /// Use this for initialization
     /// </summary>
     void Start () {
         starText = GetComponent<Text>();
+        UpdateDisplay();
     }
 
     /// <summary>
@@ -29,10 +33,15 @@ public class StarDisplay : MonoBehaviour {
     /// 
     /// </summary>
     /// <param name="amount"></param>
-    public void UseStars(int amount)
+    public Status UseStars(int amount)
     {
-        stars -= amount;
-        UpdateDisplay();
+        if(stars >= amount)
+        {
+            stars -= amount;
+            UpdateDisplay();
+            return Status.SUCCESS;
+        }
+        return Status.FAILURE;
     }
 
     /// <summary>

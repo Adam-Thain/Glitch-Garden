@@ -6,6 +6,11 @@ public class Defender : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
+    public int starCost = 100;
+
+    /// <summary>
+    /// 
+    /// </summary>
     private StarDisplay starDisplay;
 
     /// <summary>
