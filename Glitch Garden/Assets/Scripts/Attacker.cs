@@ -8,6 +8,12 @@ using System.Collections;
 public class Attacker : MonoBehaviour {
 
     /// <summary>
+    /// Average Number Of Seconds between Appearencess
+    /// </summary>
+    [Tooltip("Average Number Of Seconds between Appearences")]
+    public float seenEverySeconds;
+
+    /// <summary>
     /// Current speed of the attacker
     /// </summary>
     private float currentSpeed;
