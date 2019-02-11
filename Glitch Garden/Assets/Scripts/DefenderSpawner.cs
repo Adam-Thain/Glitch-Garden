@@ -1,98 +1,59 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class DefenderSpawner : MonoBehaviour {
+public class DefenderSpawner : MonoBehaviour
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    Defender defender;
 
     /// <summary>
-    /// Camera
+    /// 
     /// </summary>
-    public Camera myCamera;
-
-    /// <summary>
-    /// Defender Parent
-    /// </summary>
-    private GameObject parent;
-
-    /// <summary>
-    ///  
-    /// </summary>
-    private StarDisplay starDisplay;
-
-    /// <summary>
-    /// Use this for initialization
-    /// </summary>
-    void Start()
+    private void OnMouseDown()
     {
-        // find DefenderParent
-        parent = GameObject.Find("Defenders");
-
-        //
-        starDisplay = GameObject.FindObjectOfType<StarDisplay>();
-
-        // If Defenders parent cannot be found crate a new Defenders gameobject for it
-        if (!parent)
-        {
-            parent = new GameObject("Defenders");
-        }
+        SpawnDefender(GetSquareClicked());
     }
 
     /// <summary>
     /// 
     /// </summary>
-    void OnMouseDown()
+    /// <param name="defenderToSelect"></param>
+    public void SetSelectedDefender(Defender defenderToSelect)
     {
-        Vector2 rawPos = CalculateWorldPointOfMouseClick();
-        Vector2 roundedPos = SnapToGrid(rawPos);
-        GameObject defender = Button.selectedDefender;
-
-        int defenderCost = defender.GetComponent<Defender>().starCost; 
-
-        //
-        //
-        if(starDisplay.UseStars(defenderCost) == StarDisplay.Status.SUCCESS)
-        {
-            SpawnDefender(roundedPos, defender);
-        } 
-        else
-        {
-            Debug.Log("Insufficient stars to spawn");
-        }
+        defender = defenderToSelect;
     }
 
-    private void SpawnDefender(Vector2 roundedPos, GameObject defender)
+    private Vector2 GetSquareClicked()
     {
-        Quaternion zeroRot = Quaternion.identity;
-        GameObject newDef = Instantiate(defender, roundedPos, zeroRot) as GameObject;
+        //
+        Vector2 clickPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
-        newDef.transform.parent = parent.transform;
+        //
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(clickPos);
+
+        //
+        Vector2 gridPos = SnapToGrid(worldPos);
+
+        //
+        return gridPos;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="rawWorldPos"></param>
-    /// <returns></returns>
-    Vector2 SnapToGrid(Vector2 rawWorldPos)
+    private Vector2 SnapToGrid(Vector2 rawWorldPos)
     {
         float newX = Mathf.RoundToInt(rawWorldPos.x);
         float newY = Mathf.RoundToInt(rawWorldPos.y);
-
-        return new Vector2(newX,newY);
+        return new Vector2(newX, newY);
     }
 
     /// <summary>
     /// 
     /// </summary>
-    /// <returns></returns>
-    Vector2 CalculateWorldPointOfMouseClick()
+    /// <param name="roundedPos"></param>
+    private void SpawnDefender(Vector2 roundedPos)
     {
-        float mouseX = Input.mousePosition.x;
-        float mouseY = Input.mousePosition.y;
-        float distanceFromCamera = 10f;
-
-        Vector3 weirdTriplet = new Vector3(mouseX, mouseY, distanceFromCamera);
-        Vector2 worldPos = myCamera.ScreenToWorldPoint(weirdTriplet);
-
-        return worldPos;
+        Defender newDefender = Instantiate(defender, roundedPos, Quaternion.identity) as Defender;
     }
 }

@@ -1,33 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Health : MonoBehaviour {
 
-    public float health = 100f;
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] float health = 100f;
 
     /// <summary>
-    /// Deal damage to the attached object
+    /// 
     /// </summary>
-    /// <param name="damage"> The amount of damage taken </param>
-    public void DealDamage(float damage) {
+    [SerializeField] GameObject deathVFX;
 
-        // Minus damage from health
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="damage"></param>
+    public void DealDamage(float damage)
+    {
+        //
         health -= damage;
 
-        // If zero or less health is reached
-        if (health <= 0)
+        //
+        if(health <= 0)
         {
-            // Destroy the game object
-            Destroy();
+            //
+            TriggerDeathVFX();
+
+            //
+            Destroy(gameObject);
         }
     }
 
     /// <summary>
-    /// Destroy object
+    /// 
     /// </summary>
-    public void Destroy()
+    private void TriggerDeathVFX()
     {
-        // Destroy the game object
-        Destroy(gameObject);
+        //
+        if(!deathVFX) { return; }
+
+        //
+        GameObject deathVFXObject = Instantiate(deathVFX, transform.position, transform.rotation) as GameObject;
+        Destroy(deathVFXObject, 1f);
     }
 }

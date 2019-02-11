@@ -1,31 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Defender : MonoBehaviour {
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public int starCost = 100;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    private StarDisplay starDisplay;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    void Start() {
-        starDisplay = GameObject.FindObjectOfType<StarDisplay>();
-    }
-
-    /// <summary>
-    /// Only used as a tag for now
-    /// </summary>
-    /// <param name="amount"></param>
-    public void AddStars (int amount)
-    {
-        starDisplay.AddStars(amount);
-    }
+public class Defender : MonoBehaviour
+{
+    //
+    [SerializeField] int starCost = 100;
 }

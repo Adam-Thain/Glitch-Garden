@@ -6,43 +6,40 @@ public class Projectile : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    public float speed, damage;
+    [SerializeField] float speed = 10f;
 
     /// <summary>
-    /// Use this for initialization
+    /// 
     /// </summary>
-    void Start () {
-	
-	}
+    [SerializeField] float damage = 50f;
 
     /// <summary>
     /// Update is called once per frame
     /// </summary>
     void Update () {
 
-        // Move projectile by its current speed once per frame
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        //
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
 	}
 
     /// <summary>
-    /// When the projectile collides with an enemy
+    /// 
     /// </summary>
-    /// <param name="collider"></param>
-    void OnTriggerEnter2D (Collider2D collider) {
+    /// <param name="otherCollider"></param>
+    private void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        //
+        var health = otherCollider.GetComponent<Health>();
 
-        // Get the attacker script
-        Attacker attacker = collider.gameObject.GetComponent<Attacker>();
+        //
+        var attacler = otherCollider.GetComponent<Attacker>();
 
-        // Get the health script
-        Health health = collider.gameObject.GetComponent<Health>();
-
-        // If the collider is an attacker
-        if(attacker && health)
+        if (attacler && health)
         {
-            // Deal damage to the target
+            // Reduce Health
             health.DealDamage(damage);
 
-            // Destroy the projectile
+            // Destroy Projectile
             Destroy(gameObject);
         }
     }

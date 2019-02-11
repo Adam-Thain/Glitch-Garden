@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: 4c6b0fb9e7da6364990099a83a997e4b
+timeCreated: 1549721822
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Fox Running_0
+    21300002: Fox Running_1
+    21300004: Fox Running_2
+    21300006: Fox Running_3
+    21300008: Fox Running_4
+    21300010: Fox Running_5
+    21300012: Fox Running_6
+    21300014: Fox Running_7
+    21300016: Fox Running_8
+    21300018: Fox Running_9
+    21300020: Fox Running_10
+    21300022: Fox Running_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fox Running_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 152
+        width: 128
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_1
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 152
+        width: 127
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_2
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 151
+        width: 127
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_3
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 151
+        width: 124
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_4
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 151
+        width: 131
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_5
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 149
+        width: 131
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_6
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 13
+        width: 129
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_7
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 13
+        width: 129
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_8
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 14
+        width: 127
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_9
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 13
+        width: 129
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_10
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 11
+        width: 133
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - serializedVersion: 2
+      name: Fox Running_11
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 12
+        width: 134
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

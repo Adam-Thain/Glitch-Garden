@@ -1,22 +1,39 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
-[RequireComponent (typeof(Text))]
-public class StarDisplay : MonoBehaviour {
-
-    private Text starText;
-
-    private int stars = 100;
-
-    public enum Status {SUCCESS,FAILURE};
+public class StarDisplay : MonoBehaviour
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] int stars = 100;
 
     /// <summary>
-    /// Use this for initialization
+    /// 
     /// </summary>
-    void Start () {
+    Text starText;
+
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
+    void Start()
+    {
+        //
         starText = GetComponent<Text>();
+
+        //
         UpdateDisplay();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void UpdateDisplay()
+    {
+        //
+        starText.text = stars.ToString();
     }
 
     /// <summary>
@@ -33,22 +50,12 @@ public class StarDisplay : MonoBehaviour {
     /// 
     /// </summary>
     /// <param name="amount"></param>
-    public Status UseStars(int amount)
+    public void SpendStars(int amount)
     {
         if(stars >= amount)
         {
             stars -= amount;
             UpdateDisplay();
-            return Status.SUCCESS;
         }
-        return Status.FAILURE;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    private void UpdateDisplay()
-    {
-        starText.text = stars.ToString();
     }
 }
