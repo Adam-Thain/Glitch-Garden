@@ -8,7 +8,7 @@ public class StarDisplay : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] int stars = 100;
+    [SerializeField] int stars = 500;
 
     /// <summary>
     /// 
@@ -34,6 +34,17 @@ public class StarDisplay : MonoBehaviour
     {
         //
         starText.text = stars.ToString();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public bool HaveEnoughStars(int amount)
+    {
+        //
+        return stars >= amount;
     }
 
     /// <summary>
