@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Attacker : MonoBehaviour {
 
@@ -7,7 +8,12 @@ public class Attacker : MonoBehaviour {
     /// 
     /// </summary>
     [Range(0f,5f)]
-    [SerializeField] float currentSpeed = 1f;
+    float currentSpeed = 1f;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    GameObject currentTarget;
 
     /// <summary>
     /// Update is called once per frame
@@ -16,7 +22,23 @@ public class Attacker : MonoBehaviour {
 
         //
         transform.Translate(Vector2.left * currentSpeed * Time.deltaTime);
+
+        //
+        UpdateAnimationState();
 	}
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void UpdateAnimationState()
+    {
+        //
+        if (!currentTarget)
+        {
+            //
+            GetComponent<Animator>().SetBool("isAttacking", false);
+        }
+    }
 
     /// <summary>
     /// 
@@ -25,5 +47,38 @@ public class Attacker : MonoBehaviour {
     public void SetMovementSpeed(float speed)
     {
         currentSpeed = speed;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="target"></param>
+    public void Attack(GameObject target)
+    {
+        //
+        GetComponent<Animator>().SetBool("isAttacking", true);
+
+        //
+        currentTarget = target;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="damage"></param>
+    public void StrikeCurrentTarget(float damage)
+    {
+        //
+        if (!currentTarget) { return; }
+
+        //
+        Health health = currentTarget.GetComponent<Health>();
+
+        //
+        if (health)
+        {
+            //
+            health.DealDamage(damage);
+        }
     }
 }
