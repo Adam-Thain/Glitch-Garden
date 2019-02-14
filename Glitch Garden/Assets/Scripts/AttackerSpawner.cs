@@ -17,7 +17,7 @@ public class AttackerSpawner : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] Attacker attackerPrefab;
+    [SerializeField] Attacker[] attackerPrefabArray;
 
     /// <summary>
     /// 
@@ -44,7 +44,20 @@ public class AttackerSpawner : MonoBehaviour {
     private void SpawnAttacker()
     {
         //
-        Attacker newAttacker = Instantiate(attackerPrefab, transform.position, transform.rotation) as Attacker;
+        var AttackerIndex = Random.Range(0, attackerPrefabArray.Length);
+
+        //
+        Spawn(attackerPrefabArray[AttackerIndex]);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="myAttacker"></param>
+    private void Spawn(Attacker myAttacker)
+    {
+        //
+        Attacker newAttacker = Instantiate(myAttacker, transform.position, transform.rotation) as Attacker;
 
         //
         newAttacker.transform.parent = transform;

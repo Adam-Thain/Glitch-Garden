@@ -36,7 +36,10 @@ public class LevelLoader : MonoBehaviour {
     /// <returns></returns>
     IEnumerator WaitForTime()
     {
+        //
         yield return new WaitForSeconds(timeToWait);
+
+        //
         LoadNextScene();
     }
 
@@ -45,6 +48,16 @@ public class LevelLoader : MonoBehaviour {
     /// </summary>
     public void LoadNextScene()
     {
+        //
         SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void LoadYouLose()
+    {
+        //
+        SceneManager.LoadScene("Lose Screen");
     }
 }
