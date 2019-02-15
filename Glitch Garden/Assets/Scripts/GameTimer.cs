@@ -18,18 +18,30 @@ public class GameTimer : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
+    bool triggeredLevelFinished = false;
+
+    /// <summary>
+    /// 
+    /// </summary>
     private void Update()
     {
+        // IF
+        if (triggeredLevelFinished) { return; }
+
         //
         GetComponent<Slider>().value = Time.timeSinceLevelLoad / levelTime;
 
         //
         bool timerFinished = (Time.timeSinceLevelLoad >= levelTime);
 
-        //
+        // IF
         if (timerFinished)
         {
-            Debug.Log("Level Timer Expired");
+            //
+            FindObjectOfType<LevelController>().LevelTimerFinished();
+
+            //
+            triggeredLevelFinished = true;
         }
     }
 }
