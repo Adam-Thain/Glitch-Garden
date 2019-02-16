@@ -8,12 +8,39 @@ public class LevelController : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
+    [SerializeField] float waitToLoad = 4f;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] GameObject winLabel;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] GameObject loseLabel;
+
+    /// <summary>
+    /// 
+    /// </summary>
     int numberOfAttackers = 0;
 
     /// <summary>
     /// 
     /// </summary>
     bool levelTimerFinished = false;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void Start () {
+
+        //
+        winLabel.SetActive(false);
+
+        //
+        loseLabel.SetActive(false);
+    }
 
     /// <summary>
     /// 
@@ -35,8 +62,40 @@ public class LevelController : MonoBehaviour
         // IF
         if (numberOfAttackers <= 0 && levelTimerFinished)
         {
-            Debug.Log("End Level Now!");
+            //
+            StartCoroutine(HandleWinCondition());
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator HandleWinCondition()
+    {
+        //
+        winLabel.SetActive(true);
+
+        //
+        GetComponent<AudioSource>().Play();
+
+        //
+        yield return new WaitForSeconds(waitToLoad);
+
+        //
+        FindObjectOfType<LevelLoader>().LoadNextScene();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void HandleLoseCondition()
+    {
+        //
+        loseLabel.SetActive(true);
+
+        //
+        Time.timeScale = 0;
     }
 
     /// <summary>
