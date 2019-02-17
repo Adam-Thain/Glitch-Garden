@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,40 @@ public class DefenderSpawner : MonoBehaviour
     /// 
     /// </summary>
     Defender defender;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    GameObject defenderParent;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    const string DEFENDER_PARENT_NAME = "Defenders";
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void Start()
+    {
+        //
+        CreateDefenderParent();
+
+        // IF
+        if (!defenderParent)
+        {
+            //
+            defenderParent = new GameObject(DEFENDER_PARENT_NAME);
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void CreateDefenderParent()
+    {
+        defenderParent = GameObject.Find("Defenders");
+    }
 
     /// <summary>
     /// 
@@ -85,6 +120,10 @@ public class DefenderSpawner : MonoBehaviour
     /// <param name="roundedPos"></param>
     private void SpawnDefender(Vector2 roundedPos)
     {
+        //
         Defender newDefender = Instantiate(defender, roundedPos, Quaternion.identity) as Defender;
+
+        //
+        newDefender.transform.parent = defenderParent.transform;
     }
 }

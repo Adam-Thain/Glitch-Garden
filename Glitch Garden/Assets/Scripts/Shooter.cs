@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Shooter : MonoBehaviour {
 
@@ -21,6 +22,16 @@ public class Shooter : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
+    GameObject projectileParent;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    const string PROJECTILE_PARENT_NAME = "Projectiles";
+
+    /// <summary>
+    /// 
+    /// </summary>
     private void Start()
     {
         //
@@ -28,6 +39,24 @@ public class Shooter : MonoBehaviour {
 
         //
         animator = GetComponent<Animator>();
+
+        //
+        createProjectileParent();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void createProjectileParent()
+    {
+        //
+        projectileParent = GameObject.Find(PROJECTILE_PARENT_NAME);
+
+        // IF
+        if (!projectileParent)
+        {
+            projectileParent = new GameObject(PROJECTILE_PARENT_NAME);
+        }
     }
 
     /// <summary>
@@ -91,6 +120,9 @@ public class Shooter : MonoBehaviour {
     public void Fire()
     {
         //
-        Instantiate(projectile, gun.transform.position, gun.transform.rotation);
+        GameObject newProjectile = Instantiate(projectile, gun.transform.position, gun.transform.rotation) as GameObject;
+
+        //
+        newProjectile.transform.parent = projectileParent.transform;
     }
 }
