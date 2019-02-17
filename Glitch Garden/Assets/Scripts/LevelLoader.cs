@@ -70,6 +70,15 @@ public class LevelLoader : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
+    public void LoadOptionsScreen()
+    {
+        //
+        SceneManager.LoadScene("Options Screen");
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public void LoadNextScene()
     {
         //
