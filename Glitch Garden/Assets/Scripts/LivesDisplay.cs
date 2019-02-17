@@ -9,12 +9,17 @@ public class LivesDisplay : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] int lives = 5;
+    [SerializeField] int baseLives = 5;
 
     /// <summary>
     /// 
     /// </summary>
     [SerializeField] int damage = 1;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    float lives;
 
     /// <summary>
     /// 
@@ -26,11 +31,15 @@ public class LivesDisplay : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        lives = baseLives - PlayerPrefsController.GetDifficulty();
+
         //
         livesText = GetComponent<Text>();
 
         //
         UpdateDisplay();
+
+        Debug.Log("difficulty setting currently is " + PlayerPrefsController.GetDifficulty());
     }
 
     /// <summary>
@@ -39,19 +48,19 @@ public class LivesDisplay : MonoBehaviour
     private void UpdateDisplay()
     {
         //
-        livesText.text = lives.ToString();
+        livesText.text = baseLives.ToString();
     }
 
     public void TakeLife()
     {
         //
-        lives -= damage;
+        baseLives -= damage;
 
         //
         UpdateDisplay();
 
         //
-        if (lives <= 0)
+        if (baseLives <= 0)
         {
             FindObjectOfType<LevelController>().HandleLoseCondition();
         }

@@ -5,9 +5,25 @@ using UnityEngine.UI;
 
 public class OptionsController : MonoBehaviour
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [SerializeField] Slider volumeSlider;
 
+    /// <summary>
+    /// 
+    /// </summary>
     [SerializeField] float defaultVolume = 0.8f;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] Slider difficultySlider;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] float defaultDifficulty = 0.8f;
 
     /// <summary>
     /// Start is called before the first frame update
@@ -16,6 +32,9 @@ public class OptionsController : MonoBehaviour
     {
         //
         volumeSlider.value = PlayerPrefsController.GetMasterVolume();
+
+        //
+        difficultySlider.value = PlayerPrefsController.GetDifficulty();
     }
 
     /// <summary>
@@ -47,6 +66,9 @@ public class OptionsController : MonoBehaviour
         PlayerPrefsController.SetMasterVolume(volumeSlider.value);
 
         //
+        PlayerPrefsController.SetDifficulty(volumeSlider.value);
+
+        //
         FindObjectOfType<LevelLoader>().LoadMainMenu();
     }
 
@@ -57,5 +79,8 @@ public class OptionsController : MonoBehaviour
     {
         //
         volumeSlider.value = defaultVolume;
+
+        //
+        difficultySlider.value = defaultDifficulty;
     }
 }
