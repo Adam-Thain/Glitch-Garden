@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DefenderButton : MonoBehaviour
 {
@@ -8,6 +10,39 @@ public class DefenderButton : MonoBehaviour
     /// 
     /// </summary>
     [SerializeField] Defender defenderPrefab;
+
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void Start()
+    {
+        //
+        LabelButtonWithCost();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void LabelButtonWithCost()
+    {
+        //
+        Text costText = GetComponentInChildren<Text>();
+
+        // IF
+        // ELSE
+        if (!costText)
+        {
+            //
+            Debug.LogError(name + " has no cost text, add some!");
+        }
+        else
+        {
+            //
+            costText.text = defenderPrefab.GetStarCost().ToString();
+        }
+    }
 
     /// <summary>
     /// 
